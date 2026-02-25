@@ -470,7 +470,7 @@ def editBooks():
                                 print("Invalid response. Try again")
                                 continue 
 
-                        continue #might be infinite loop               
+                        continue               
 
             case _:
                 print("Invalid response. Try again.")
