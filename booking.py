@@ -139,7 +139,7 @@ def editBooks():
 
                             else:
 
-                                if rename_book == "*b":
+                                if rename_book == "*b" or rename_book == "*B":
                                     rename_book = rename_book.strip("*")
 
                                 with open('books.json', 'r') as new_book:
@@ -359,7 +359,9 @@ def editBooks():
 
                 while True:
 
-                    response_4 = input("\nWhich book have you read? [enter none to go back, enter e to exit] ")
+                    print("Add * before the book name if the book is titled None, E, or A")
+
+                    response_4 = input("\nWhich book have you read? [enter none to go back, enter e to exit, or enter a to add books] ")
 
                     with open('books.json', 'r') as book_read_2:
                         library_3 = json.load(book_read_2)
@@ -370,12 +372,27 @@ def editBooks():
                     elif response_4.lower() == "e":
                         print("Thank you and take care")
                         sys.exit(0)
+
+                    elif response_4.lower() == "a":
+                        print("Going back to main menu...")
+
+                        for _ in range(3):
+                            for i in range(4):
+                                sys.stdout.write(f"\rloading{'.' * i}   ")
+                                sys.stdout.flush()
+                                time.sleep(0.4)
+
+                        checkBooks()
+                        break
                         
                     elif response_4.title() not in library_3.keys():
                         print("Response not in library. Try again")
                         continue
 
                     else:
+
+                        if response_4.lower() == "*none" or response_4.lower() == "*e" or response_4.lower() == "*a":
+                            response_4.title() = response_4.strip("*")
 
                         while True:
 
@@ -397,7 +414,7 @@ def editBooks():
                                 elif response_5.lower() == "b":
                                     break
 
-                                elif int(response_5 ) > library_4[response_4]:
+                                elif int(response_5) > library_4[response_4]:
                                     print("Pages read is above the total amount of pages. Try again")
                                     continue
 
