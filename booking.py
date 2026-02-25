@@ -453,7 +453,7 @@ def editBooks():
                                     print(f"You have read {response_5} pages on {response_4}. {remaining_pages} pages remaining!")
 
                                     book_read_pages.append(f"{prefix_book_read} {response_4}")
-                                    pages_read.append(response_5)
+                                    pages_read.append(int(response_5))
 
                                     with open('books.json', 'r') as book_page_read:
                                         library_read = json.load(book_page_read)
