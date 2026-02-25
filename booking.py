@@ -7,6 +7,8 @@ def welcomeScreen():
 
     while True:
 
+        print("To name the book: B, E or A, add * before the title")
+
         book_name = input("Enter book name: ")
 
         match book_name:
@@ -359,14 +361,12 @@ def editBooks():
 
                 while True:
 
-                    print("Add * before the book name if the book is titled None, E, or A")
-
-                    response_4 = input("\nWhich book have you read? [enter none to go back, enter e to exit, or enter a to add books] ")
+                    response_4 = input("\nWhich book have you read? [enter b to go back, enter e to exit, or enter a to add books] ")
 
                     with open('books.json', 'r') as book_read_2:
                         library_3 = json.load(book_read_2)
 
-                    if response_4.lower() == "none":
+                    if response_4.lower() == "b":
                         break
 
                     elif response_4.lower() == "e":
@@ -382,6 +382,7 @@ def editBooks():
                                 sys.stdout.flush()
                                 time.sleep(0.4)
 
+                        print("\n")
                         checkBooks()
                         break
                         
@@ -391,10 +392,9 @@ def editBooks():
 
                     else:
 
-                        if response_4.lower() == "*none" or response_4.lower() == "*e" or response_4.lower() == "*a":
-                            response_4.title() = response_4.strip("*")
-
                         while True:
+
+                            response_4 = response_4.title()
 
                             try:
 
